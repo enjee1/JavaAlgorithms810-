@@ -4,38 +4,36 @@ import java.sql.Array;
 import java.util.Arrays;
 
 public class ReverseTheString {
-    private String originalString;
-    private char[] originalChars;
-    private int[] caseCheck;
 
-
-    public ReverseTheString(String input) {
-        originalString = input;
-        originalChars = input.toCharArray();
-    }
-
-    public char[] checkString() {
-        caseCheck = new int[originalString.length()];
-
-        for (int i = 0; i < originalString.length(); i++){
-            originalChars[i] = originalString.charAt(i);
-            if (Character.isUpperCase(originalChars[i])){
-                caseCheck[i] = 2;
-            } else if (Character.isWhitespace(originalChars[i])) {
-                caseCheck[i] = 0;
-            } else {
-                caseCheck[i] = 1;
+    public static String specialReverseString(String str) {
+        String reversed = new StringBuilder(str).reverse().toString().replaceAll(" ","");
+        System.out.println(reversed);
+        StringBuilder s = new StringBuilder();
+        int i = 0;
+        for (char c : str.toCharArray()) {
+            if (Character.isUpperCase(c))
+                s.append(Character.toUpperCase(reversed.charAt(i)));
+            else if (!Character.isSpaceChar(c))
+                s.append(Character.toLowerCase(reversed.charAt(i)));
+            else {
+                s.append(c);
+                i--;
             }
+            i++;
         }
-        System.out.println(Arrays.toString(caseCheck));
-
-        return originalChars;
-    }
-
-    public String getOriginalString() {
-        return originalString;
+        return s.toString();
     }
 
 
+    public static void run() {
+
+        System.out.println(specialReverseString("Tibade"));
+        System.out.println(specialReverseString("UPPER lower"));
+        System.out.println(specialReverseString("1 23 456"));
+
+    }
 }
+
+
+
 
