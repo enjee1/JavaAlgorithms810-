@@ -48,8 +48,9 @@ Create a new InteliJ project called ( JavaAlgorithms810 ) Complete the following
 public class Main {
 
     public static void main(String[] args) {
-        PerfectSquarePatch.run();
         ArrayOfMultiples.run();
+        PerfectSquarePatch.run();
+
     }
 
 }
